@@ -1,4 +1,6 @@
-
+"""
+This code is to generate csv by using random function which generates value from [0,1)
+"""
 import csv
 import random
 
@@ -16,6 +18,7 @@ def getPrediction(item, questionsData, userData):
 
     questionTag = list(map(lambda x: x[1] ,list(filter(lambda x: x[0] == qsId , questionsData))))
     userTag = list(map(lambda x: x[1].split('/') ,list(filter(lambda x: x[0] == userId , userData))))
+    #print "Running for qsId = ", qsId, " userId = " , userId, "filter questionTag = ", questionTag, " filter userTag =", userTag
 
     return 1 if questionTag in userTag else 0
 
@@ -41,8 +44,8 @@ if __name__ == "__main__":
         for item in lines:
             if (count in [1000, 2000, 5000,7000, 10000, 15000, 20000, 25000, 30000]):
                 print "......Processed total ", count, " lines......."
-            val = getPrediction(item, questionsData, userData)
-            #val = random.random()
+            #val = getPrediction(item, questionsData, userData)
+            val = random.random()
             #print val
             fileWriter.writerow([item[0], item[1], str(val)])
             count = count + 1
